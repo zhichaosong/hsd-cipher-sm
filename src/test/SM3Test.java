@@ -1,11 +1,9 @@
-package com.heshidai.security.cipher;
-
+package test;
 import org.bouncycastle.util.encoders.Hex;
-import org.junit.jupiter.api.Test;
 
+import cipher.SM3Digest;
 public class SM3Test {
 
-    @Test
     public void testSM3()
     {
         byte[] md = new byte[32];

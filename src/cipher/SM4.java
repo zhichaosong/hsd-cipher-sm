@@ -1,4 +1,4 @@
-package com.heshidai.security.cipher;
+package cipher;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -174,6 +174,13 @@ public class SM4
 		PUT_ULONG_BE(ulbuf[32], output, 12);
 	}
 
+	/**
+	 * 余数补齐函数
+	 * 解析：https://blog.csdn.net/zhichaosong/article/details/88658623
+	 * @param input
+	 * @param mode
+	 * @return byte[]
+	 */
 	private byte[] padding(byte[] input, int mode)
 	{
 		if (input == null)

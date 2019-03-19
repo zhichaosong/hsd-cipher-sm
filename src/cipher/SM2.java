@@ -1,4 +1,4 @@
-package com.heshidai.security.cipher;
+package cipher;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;

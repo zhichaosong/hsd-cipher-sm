@@ -1,4 +1,4 @@
-package com.heshidai.security.cipher;
+package cipher;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Enumeration;
 
-import com.heshidai.security.cipher.Cipher;
 import org.bouncycastle.asn1.ASN1EncodableVector;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1Sequence;

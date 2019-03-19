@@ -1,8 +1,12 @@
-package com.heshidai.security.cipher;
+package cipher;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import cipher.SM4;
+import cipher.SM4_Context;
+import cipher.Util;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
@@ -41,6 +45,79 @@ public class SM4Utils
 
 	public SM4Utils()
 	{
+	}
+	
+	/**
+	 * 加密字节流_ECB
+	 * add by songzc 20190319
+	 * @param input
+	 * @return byte[]
+	 */
+	public byte[] encryptData_ECB(byte[] input)
+	{
+		try
+		{
+			SM4_Context ctx = new SM4_Context();
+			ctx.isPadding = true;	// 是否对齐到16位
+			ctx.mode = SM4.SM4_ENCRYPT;
+
+			byte[] keyBytes;
+			if (hexString)
+			{
+				keyBytes = Util.hexStringToBytes(secretKey);
+			}
+			else
+			{
+				keyBytes = secretKey.getBytes();
+			}
+
+			SM4 sm4 = new SM4();
+			sm4.sm4_setkey_enc(ctx, keyBytes);
+			byte[] encrypted = sm4.sm4_crypt_ecb(ctx, input);
+			return encrypted;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	
+	/**
+	 * 解密字节流_ECB
+	 * add by songzc 20190319
+	 * @param input
+	 * @return byte[]
+	 */
+	public byte[] decryptData_ECB(byte[] input)
+	{
+		try
+		{
+			SM4_Context ctx = new SM4_Context();
+			ctx.isPadding = true;
+			ctx.mode = SM4.SM4_DECRYPT;
+
+			byte[] keyBytes;
+			if (hexString)
+			{
+				keyBytes = Util.hexStringToBytes(secretKey);
+			}
+			else
+			{
+				keyBytes = secretKey.getBytes();
+			}
+
+			SM4 sm4 = new SM4();
+			sm4.sm4_setkey_dec(ctx, keyBytes);
+			byte[] decrypted = sm4.sm4_crypt_ecb(ctx, input);
+			return decrypted;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public String encryptData_ECB(String plainText)

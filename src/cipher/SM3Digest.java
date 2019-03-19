@@ -1,4 +1,4 @@
-package com.heshidai.security.cipher;
+package cipher;
 
 import org.bouncycastle.util.encoders.Hex;
 

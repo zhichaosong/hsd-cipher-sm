@@ -1,12 +1,11 @@
-package com.heshidai.security.cipher;
-
-import org.junit.jupiter.api.Test;
+package test;
 
 import java.io.IOException;
 
+import cipher.SM4Utils;
+
 public class SM4Test {
 
-    @Test
     public void testSM4() throws IOException
     {
         String plainText = "abcd";

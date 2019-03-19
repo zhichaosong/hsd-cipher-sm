@@ -1,9 +1,11 @@
-package com.heshidai.security.cipher;
+package test;
 
 import org.bouncycastle.asn1.*;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.util.encoders.Base64;
-import org.junit.jupiter.api.Test;
+
+import cipher.SM2Utils;
+import cipher.Util;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -14,7 +16,6 @@ import java.util.Enumeration;
 
 public class SM2Test {
 
-    @Test
     public void testSM2() throws Exception {
         String plainText = "message digest";
         byte[] sourceData = plainText.getBytes();
